@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Luna Aira Q — Portofolio</title>
+
+  <!-- style -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- fav / metadata (optional) -->
+  <meta name="description" content="Portofolio Luna Aira Q — Profile, Skills, Projects, Music, Travel, Contact" />
+</head>
+<body>
+  <!-- gentle smoke canvas (background) -->
+  <canvas id="smokeCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Luna Aira Q</h1>
+        <p class="tag">Eternal Dream • Software Engineering Student</p>
+      </div>
+      <div class="clock" id="clock" aria-live="polite">--:--:--</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Profile -->
+    <section id="profile" class="card">
+      <div class="profile-grid">
+        <img src="foto-saya.jpeg" alt="Foto Luna" class="avatar" />
+        <div class="profile-content">
+          <h2>Profile</h2>
+          <p>Halo, saya <strong>Luna Aira Q</strong>. Mahasiswa Rekayasa Perangkat Lunak yang menyukai UI, animasi halus, dan eksperimen desain. Saya membangun antarmuka yang rapi dan fungsional.</p>
+          <p class="muted">Fokus: HTML • CSS • JavaScript • PHP • Laravel (dasar)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>Saya suka memecahkan masalah lewat kode dan desain. Portofolio ini menampilkan beberapa proyek dan musik yang menginspirasi saya. Layout ini dibuat responsif agar nyaman dipresentasikan saat PKL.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>HTML &amp; CSS (Flexbox, Grid)</li>
+        <li>JavaScript (DOM, ES6+)</li>
+        <li>PHP &amp; Laravel (dasar)</li>
+        <li>Git • Responsive Design • UI/UX basics</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project">
+          <img src="laravel-project.jpeg" alt="Preview Project" />
+          <h3>Laravel Web App</h3>
+          <p>Proyek sederhana memakai struktur MVC dan autentikasi.</p>
+          <a href="#" class="btn">Lihat</a>
+        </article>
+
+        <article class="project">
+          <img src="portfolio-preview.jpeg" alt="Portfolio Preview" />
+          <h3>Personal Portfolio</h3>
+          <p>Portofolio ini (versi rapi) — fokus pada aksesibilitas dan responsif.</p>
+          <a href="#" class="btn">Lihat</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section id="music" class="card">
+      <h2>Music I Love</h2>
+      <div class="grid-2">
+        <div class="media-item">
+          <strong>Nirvana</strong>
+          <p>Grunge Rock — Nevermind, In Utero</p>
+        </div>
+        <div class="media-item">
+          <strong>Taeko Onuki</strong>
+          <p>City Pop — Mignonne, Sunshower</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel -->
+    <section id="travel" class="card">
+      <h2>Places I Want to Visit</h2>
+      <div class="travel-grid">
+        <div class="place">
+          <img src="kyoto.jpeg" alt="Kyoto" />
+          <p><strong>Kyoto, Japan</strong><br/>Kuil, tradisi, ketenangan.</p>
+        </div>
+        <div class="place">
+          <img src="malioboro.jpeg" alt="Malioboro" />
+          <p><strong>Malioboro, Yogyakarta</strong><br/>Kultur, musik jalanan, makanan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small interactive tools -->
+    <section id="tools" class="card">
+      <h2>Tools</h2>
+
+      <div class="tools-grid">
+        <!-- Kalkulator sederhana -->
+        <div class="tool">
+          <h3>Kalkulator</h3>
+          <div class="calc">
+            <input id="num1" type="number" placeholder="Number 1" />
+            <select id="op" aria-label="Operator">
+              <option value="+">+</option>
+              <option value="-">−</option>
+              <option value="*">×</option>
+              <option value="/">÷</option>
+            </select>
+            <input id="num2" type="number" placeholder="Number 2" />
+            <button id="calcBtn" class="btn">Hitung</button>
+            <div id="calcResult" class="result" aria-live="polite">Hasil: —</div>
+          </div>
+        </div>
+
+        <!-- Ringkasan contact / CV -->
+        <div class="tool">
+          <h3>CV &amp; Contact</h3>
+          <p class="muted">Untuk PKL, lampirkan CV dan link GitHub pada form kontak di bawah.</p>
+          <a href="#" class="btn">Download CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <form id="contactForm" class="contact-form" action="#" method="post" novalidate>
+        <label>
+          <span>Nama</span>
+          <input name="nama" type="text" required />
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input name="email" type="email" required />
+        </label>
+
+        <label>
+          <span>Pesan</span>
+          <textarea name="pesan" rows="4" required></textarea>
+        </label>
+
+        <button type="submit" class="btn">Kirim</button>
+        <div id="formMessage" class="muted" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Luna Aira Q — All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
