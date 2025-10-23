@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Luna Aira Q — Portofolio</title>
+  <title>Eternal Dream</title>
 
   <!-- style -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- fav / metadata (optional) -->
-  <meta name="description" content="Portofolio Luna Aira Q — Profile, Skills, Projects, Music, Travel, Contact" />
+  <meta name="description" content="Portofolio Luna Aira Q - More Wearble display on Desktop." />
 </head>
 <body>
   <!-- gentle smoke canvas (background) -->
@@ -19,7 +19,7 @@
     <div class="container header-inner">
       <div class="brand">
         <h1>Luna Aira Q</h1>
-        <p class="tag">Eternal Dream • Software Engineering Student</p>
+        <p class="tag">Software Engineering Student • More Wearble display on Desktop.</p>
       </div>
       <div class="clock" id="clock" aria-live="polite">--:--:--</div>
     </div>
@@ -32,7 +32,8 @@
         <img src="foto-saya.jpeg" alt="Foto Luna" class="avatar" />
         <div class="profile-content">
           <h2>Profile</h2>
-          <p>Halo, saya <strong>Luna Aira Q</strong>. Mahasiswa Rekayasa Perangkat Lunak yang menyukai UI, animasi halus, dan eksperimen desain. Saya membangun antarmuka yang rapi dan fungsional.</p>
+          <p>Halo, saya <strong>Luna Aira Q</strong>. Hello, I'm Luna Aira Q. Software Engineering student, interface architect, and perpetual learner. I build bridges between ideas and reality through clean, efficient code.
+Every project is a new journey into the unknown realms of technology.</p>
           <p class="muted">Fokus: HTML • CSS • JavaScript • PHP • Laravel (dasar)</p>
         </div>
       </div>
@@ -49,6 +50,7 @@
       <h2>Skills</h2>
       <ul class="skills-list">
         <li>HTML &amp; CSS (Flexbox, Grid)</li>
+        
         <li>JavaScript (DOM, ES6+)</li>
         <li>PHP &amp; Laravel (dasar)</li>
         <li>Git • Responsive Design • UI/UX basics</li>
@@ -67,9 +69,9 @@
         </article>
 
         <article class="project">
-          <img src="portfolio-preview.jpeg" alt="Portfolio Preview" />
-          <h3>Personal Portfolio</h3>
-          <p>Portofolio ini (versi rapi) — fokus pada aksesibilitas dan responsif.</p>
+          <img src="CV-preview.jpeg" alt="Portfolio Preview" />
+          <h3>Personal CV</h3>
+          <p>Ini CV saya untuk melamar suatu perusahaan.</p>
           <a href="#" class="btn">Lihat</a>
         </article>
       </div>
@@ -80,12 +82,17 @@
       <h2>Music I Love</h2>
       <div class="grid-2">
         <div class="media-item">
+
           <strong>Nirvana</strong>
+                            <img src="logo Nirvana.jpeg" alt="Nirvana" class="track-image">
           <p>Grunge Rock — Nevermind, In Utero</p>
+                  <a href="https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh" target="_blank" class="track-link; class = track-info">Listen</a>
         </div>
         <div class="media-item">
           <strong>Taeko Onuki</strong>
+                  <img src="Taeko Onuki.jpeg" alt="Nirvana" class="track-image">
           <p>City Pop — Mignonne, Sunshower</p>
+                  <a href="https://open.spotify.com/album/0Y4RPWAZZui6gUL1kwgND6" target="_blank" class="track-link; class= track-info">Listen</a>
         </div>
       </div>
     </section>
@@ -93,14 +100,17 @@
     <!-- Travel -->
     <section id="travel" class="card">
       <h2>Places I Want to Visit</h2>
-      <div class="travel-grid">
+      <div class="travel-grid; class= travel-track">
         <div class="place">
           <img src="kyoto.jpeg" alt="Kyoto" />
           <p><strong>Kyoto, Japan</strong><br/>Kuil, tradisi, ketenangan.</p>
+              <a href="https://www.google.com/maps/place/Kyoto,+Japan/" target="_blank" class="travel-link">Explore</a>
         </div>
+        <br>
         <div class="place">
-          <img src="malioboro.jpeg" alt="Malioboro" />
+          <img src="malioboro.jpeg" alt="Malioboro"/>
           <p><strong>Malioboro, Yogyakarta</strong><br/>Kultur, musik jalanan, makanan.</p>
+              <a href="https://www.google.com/maps/place/Malioboro,+Yogyakarta,+Indonesia/" target="_blank" class="travel-link">Explore</a>
         </div>
       </div>
     </section>
@@ -130,40 +140,32 @@
         <!-- Ringkasan contact / CV -->
         <div class="tool">
           <h3>CV &amp; Contact</h3>
-          <p class="muted">Untuk PKL, lampirkan CV dan link GitHub pada form kontak di bawah.</p>
+          <p class="muted">Untuk PKL, lampirkan CV pada form kontak di bawah.</p>
           <a href="#" class="btn">Download CV</a>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="card">
+    <section id="tools" class="card; class= contact-form">
       <h2>Contact</h2>
-      <form id="contactForm" class="contact-form" action="#" method="post" novalidate>
-        <label>
-          <span>Nama</span>
-          <input name="nama" type="text" required />
-        </label>
-
-        <label>
-          <span>Email</span>
-          <input name="email" type="email" required />
-        </label>
-
-        <label>
-          <span>Pesan</span>
-          <textarea name="pesan" rows="4" required></textarea>
-        </label>
-
-        <button type="submit" class="btn">Kirim</button>
-        <div id="formMessage" class="muted" aria-live="polite"></div>
-      </form>
+   <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="fbbfa945-dce2-45ff-8c69-f3a2e40443cd">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required>Massage</textarea>
+  <button type="submit">Submit Form</button>
+</form>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Luna Aira Q — All rights reserved</p>
+      <p>&copy; <span id="year"></span> Luna Aira Q - All rights reserved</p>
+            <a href="https://github.com/HeraldOfChange-Golden" target="_blank" rel="noopener" title="Github" class="social-link"><i class="fab fa-github">Github</i></a>
+      <a href="https://instagram.com/water_blood1945" target="_blank" rel="noopener" title="Instagram" class="social-link"><i class="fab fa-instagram">Instagram</i></a>
+      <a href="https://tiktok.com/@temptation_stairway666" target="_blank" rel="noopener" title="TikTok" class="social-link"><i class="fab fa-tiktok">tiktok</i></a>
+      <a href="https://discord.com/users/eternal_destroyer000" target="_blank" rel="noopener" title="Discord" class="social-link"><i class="fab fa-discord">Discord</i></a>
     </div>
   </footer>
 

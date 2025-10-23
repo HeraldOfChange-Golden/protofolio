@@ -1,5 +1,3 @@
-// script.js - clock, calculator, smoke background, and small form handler
-
 // ---------- Clock ----------
 (function clockInit(){
   const el = document.getElementById('clock');
@@ -50,17 +48,16 @@
   if(!form) return;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Simple validation demo; in production, submit to server or API
     const data = new FormData(form);
     const nama = data.get('nama') || '';
     const email = data.get('email') || '';
     const pesan = data.get('pesan') || '';
     if(!nama.trim() || !email.trim() || !pesan.trim()){
-      msg.textContent = 'Mohon isi semua field sebelum mengirim.';
+      msg.textContent = 'Mohon isi semua field sebelum mengirim :(';
       return;
     }
     // mimic success
-    msg.textContent = 'Terima kasih! Pesan berhasil disimpan (demo).';
+    msg.textContent = 'Terima kasih! Pesan berhasil disimpan :)';
     form.reset();
   });
 })();
