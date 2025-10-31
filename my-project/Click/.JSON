@@ -1,0 +1,17 @@
+{
+  "coord": { "lon": 106.79, "lat": -6.59 },
+  "main": {
+    "temp": 305.15,
+    "pressure": 1012,
+    "humidity": 75
+  },
+  "wind": { "speed": 2.57 },
+  "name": "",
+  "sys": { "country": "ID" },
+  "weather": [
+    {
+      "description": "",
+      "icon": "04d"
+    }
+  ]
+}

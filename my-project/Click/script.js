@@ -90,7 +90,7 @@
     particles.push({
       x: Math.random()*W,
       y: Math.random()*H,
-      r: (Math.random()*80 + 40),
+      r: (Math.random()* 50 + 20),
       vx: (Math.random()*0.2 - 0.1),
       vy: (Math.random()*0.3 + 0.05),
       alpha: Math.random()*0.25 + 0.05
@@ -165,3 +165,105 @@
 
         clearTimeout(shakeTimer);
     });
+
+// Tambahkan code ini ke script.js Anda
+
+(function weatherInit() {
+  const API_KEY = "1a707d8de7e48449e26ebb1c28967458";
+  const BASE_URL = "https://api.openweathermap.org/data/2.5/";
+
+  const resultContainer = document.getElementById('weatherResult');
+  const locationBtn = document.getElementById('useLocationBtn');
+  const searchBtn = document.getElementById('searchCityBtn');
+  const cityInput = document.getElementById('cityInput');
+  const tempToggleBtn = document.getElementById('toggleTempBtn');
+  const msg = document.getElementById('weatherMessage');
+
+  let unit = 'C';
+  let currentWeatherData = null;
+  let forecastData = null;
+
+  function kelvinToUnit(kelvin, targetUnit) {
+    return targetUnit === 'F'
+      ? Math.round((kelvin - 273.15) * 9 / 5 + 32)
+      : Math.round(kelvin - 273.15);
+  }
+
+  function showMessage(text, isError = false) {
+    msg.textContent = text;
+    msg.className = isError ? 'text-red-400 mt-4 text-center' : 'text-green-400 mt-4 text-center';
+  }
+
+  function renderWeather() {
+    if (!currentWeatherData || !forecastData) return;
+
+    const { name, sys, main, weather, wind, rain } = currentWeatherData;
+    document.getElementById('currentLocation').textContent = `${name}, ${sys.country}`;
+    document.getElementById('currentTemp').textContent = `${kelvinToUnit(main.temp, unit)}°${unit}`;
+    tempToggleBtn.textContent = unit === 'C' ? '°F' : '°C';
+    document.getElementById('weatherDesc').textContent = weather[0].description.toUpperCase();
+    document.getElementById('currentPrecip').textContent = `Precipitation: ${(rain?.['1h'] || 0)} mm`;
+    document.getElementById('currentWind').textContent = `Wind: ${wind.speed.toFixed(1)} m/s`;
+
+    const hourlyContainer = document.getElementById('hourlyForecast');
+    hourlyContainer.innerHTML = '';
+    forecastData.list.slice(0, 8).forEach(item => {
+      const time = new Date(item.dt * 1000);
+      const timeStr = time.getHours().toString().padStart(2, '0') + ':00';
+      const temp = kelvinToUnit(item.main.temp, unit);
+      const icon = item.weather[0].icon;
+      hourlyContainer.innerHTML += `
+        <div class="flex flex-col items-center p-3 flex-shrink-0 w-24 bg-gray-800/50 rounded-lg shadow-md">
+          <span class="text-sm text-gray-300">${timeStr}</span>
+          <img src="https://openweathermap.org/img/wn/${icon}.png" alt="icon" class="w-10 h-10">
+          <span class="text-lg font-bold">${temp}°${unit}</span>
+        </div>`;
+    });
+
+    resultContainer.classList.remove('hidden');
+  }
+
+  async function fetchWeather(query, isCoord = false) {
+    try {
+      showMessage('Loading data...');
+      resultContainer.classList.add('hidden');
+
+      const queryParam = isCoord ? `lat=${query.lat}&lon=${query.lon}` : `q=${query}`;
+      const [curRes, forRes] = await Promise.all([
+        fetch(`${BASE_URL}weather?${queryParam}&appid=${API_KEY}`),
+        fetch(`${BASE_URL}forecast?${queryParam}&appid=${API_KEY}`)
+      ]);
+
+      currentWeatherData = await curRes.json();
+      forecastData = await forRes.json();
+
+      if (currentWeatherData.cod != 200) throw new Error('The city was not found...');
+
+      renderWeather();
+      showMessage('Weather data successfully loaded!');
+    } catch (err) {
+      showMessage(`Error: ${err.message}`, true);
+    }
+  }
+
+  searchBtn.addEventListener('click', () => {
+    const city = cityInput.value.trim();
+    if (city) fetchWeather(city);
+    else showMessage('Enter the city name first.', true);
+  });
+
+  locationBtn.addEventListener('click', () => {
+    if (!navigator.geolocation) return showMessage('Geolocation is not supported.', true);
+    showMessage('Requesting location permission...');
+    navigator.geolocation.getCurrentPosition(
+      pos => fetchWeather({ lat: pos.coords.latitude, lon: pos.coords.longitude }, true),
+      err => showMessage('Cant get location: ' + err.message, true)
+    );
+  });
+  tempToggleBtn.addEventListener('click', () => {
+    unit = unit === 'C' ? 'F' : 'C';
+    renderWeather();
+  });
+
+
+})();
